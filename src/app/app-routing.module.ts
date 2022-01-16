@@ -6,7 +6,12 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () =>
-      import('../app/auth/auth.module').then((m) => m.AuthModule),
+      import('./pages/auth/auth.module').then((m) => m.AuthModule),
+  },
+  {
+    path: 'users',
+    loadChildren: () =>
+      import('./pages/users/users.module').then((m) => m.UsersModule),
   },
   { path: '**', component: NotFoundComponent },
 ];
