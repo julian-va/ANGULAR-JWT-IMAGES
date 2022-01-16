@@ -1,0 +1,27 @@
+.body {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  align-items: center;
+  background-color: aliceblue;
+}
+.login {
+  width: 100%;
+  max-width: 330px;
+}
+.ancho {
+  width: 80%;
+}
+.button {
+  height: 50px;
+}
+
+.mycard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
