@@ -11,7 +11,6 @@ import { Router } from '@angular/router';
 export class AuthComponent implements OnInit {
   formLogin: FormGroup;
   authUser: Auth = { user_email: '', user_hashed_password: '' };
-  private token: string = '';
 
   constructor(
     private readonly authService: AuthService,
@@ -34,8 +33,7 @@ export class AuthComponent implements OnInit {
       });
       this.authService.auth(userLogin).subscribe((response) => {
         if (response.token) {
-          this.formLogin.reset();
-          this.router.navigate(['users/userAll']);
+          this.router.navigate(['user']);
         }
       });
     } catch (error) {

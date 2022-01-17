@@ -32,6 +32,7 @@ export class AuthService {
       .pipe(
         tap((response) => {
           if (response.token) {
+            this.validateToken();
             this.tokenService.saveToken(response.token);
             this.verifyToken();
           }
@@ -62,5 +63,16 @@ export class AuthService {
     return this.httpClient
       .post<ResponTokenVerify>(this.urlAuth.tokenVerify, ll)
       .pipe(tap((user) => this.userData.next(user)));
+  }
+
+  validateToken(): void {
+    try {
+      const tokenTemp: string = this.tokenService.getToken();
+      if (!!tokenTemp) {
+        this.tokenService.deleteToken();
+      }
+    } catch (error) {
+      console.error(error);
+    }
   }
 }

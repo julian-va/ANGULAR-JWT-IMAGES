@@ -10,11 +10,11 @@ const routes: Routes = [
     redirectTo: 'auth',
     pathMatch: 'full',
   },
+  { path: 'authUserCreate', component: CreateUserComponent },
   {
     path: 'auth',
     component: AuthComponent,
   },
-  { path: 'authUserCreate', component: CreateUserComponent },
 ];
 
 @NgModule({

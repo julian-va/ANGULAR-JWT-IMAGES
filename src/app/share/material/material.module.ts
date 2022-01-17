@@ -8,6 +8,9 @@ import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [],
@@ -21,6 +24,9 @@ import { MatIconModule } from '@angular/material/icon';
     MatSelectModule,
     MatToolbarModule,
     MatIconModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatTooltipModule,
   ],
   exports: [
     MatFormFieldModule,
@@ -31,6 +37,9 @@ import { MatIconModule } from '@angular/material/icon';
     MatSelectModule,
     MatToolbarModule,
     MatIconModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatTooltipModule,
   ],
 })
 export class MaterialModule {}

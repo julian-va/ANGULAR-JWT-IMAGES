@@ -25,12 +25,11 @@ export class AuthGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    let guards: boolean = false;
     const token: string = this.tokenService.getToken();
     if (!!token) {
-      guards = true;
+      return true;
     }
     this.router.navigate(['auth']);
-    return guards;
+    return false;
   }
 }

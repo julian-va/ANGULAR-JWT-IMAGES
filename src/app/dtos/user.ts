@@ -4,7 +4,7 @@ export interface UserBase {
   user_email: string;
   user_hashed_password: string;
   user_is_active: boolean;
-  creation_date: Date;
+  creation_date?: Date;
   user_id: number;
 }
 

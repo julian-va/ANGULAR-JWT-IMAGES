@@ -23,7 +23,7 @@ export class UserService {
     return this.httpClient.post<UserBase>(this.urlUser.create, user);
   }
 
-  login(auth: Auth): Observable<ResponAuth> {
-    return this.httpClient.post<ResponAuth>('ddd', auth);
+  getAllUser(): Observable<UserBase[]> {
+    return this.httpClient.get<UserBase[]>(this.urlUser.getAllUser);
   }
 }

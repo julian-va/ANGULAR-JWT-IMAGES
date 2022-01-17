@@ -1,1 +1,87 @@
-<p>userall works!</p>
+<mat-toolbar color="primary">
+  <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with menu icon"
+  ></button>
+  <span>Angular-jwt-images</span>
+  <span class="example-spacer"></span>
+
+  <button
+    mat-icon-button
+    class="example-icon"
+    matTooltip="logout"
+    aria-label="Example icon-button with share icon"
+    (click)="logout()"
+  >
+    <mat-icon>logout</mat-icon>
+  </button>
+</mat-toolbar>
+
+<mat-form-field appearance="standard">
+  <mat-label>Filter</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input />
+</mat-form-field>
+
+<div class="mat-elevation-z8">
+  <div>
+    <table mat-table [dataSource]="dataSource" matSort>
+      <!-- ID Column -->
+      <ng-container matColumnDef="user_id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+        <td mat-cell *matCellDef="let row">{{ row.user_id }}</td>
+      </ng-container>
+
+      <!-- Progress Column -->
+      <ng-container matColumnDef="user_name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+        <td mat-cell *matCellDef="let row">{{ row.user_name }}</td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="user_email">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
+        <td mat-cell *matCellDef="let row">{{ row.user_email }}</td>
+      </ng-container>
+
+      <!-- Fruit Column -->
+      <ng-container matColumnDef="user_name_login">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Login</th>
+        <td mat-cell *matCellDef="let row">{{ row.user_name_login }}</td>
+      </ng-container>
+
+      <!-- Fruit Column -->
+      <ng-container matColumnDef="user_is_active">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Is active</th>
+        <td mat-cell *matCellDef="let row">{{ row.user_is_active }}</td>
+      </ng-container>
+
+      <!-- Fruit Column -->
+      <ng-container matColumnDef="creation_date">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Creation date</th>
+        <td mat-cell *matCellDef="let row">{{ row.creation_date | date }}</td>
+      </ng-container>
+
+      <!-- Fruit Column -->
+      <ng-container matColumnDef="user_hashed_password">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Password</th>
+        <td mat-cell *matCellDef="let row">{{ row.user_hashed_password }}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+      <!-- Row shown when there is no matching data. -->
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">
+          No data matching the filter "{{ input.value }}"
+        </td>
+      </tr>
+    </table>
+
+    <mat-paginator
+      [pageSizeOptions]="[5, 10, 25, 100]"
+      aria-label="Select page of users"
+    ></mat-paginator>
+  </div>
+</div>
