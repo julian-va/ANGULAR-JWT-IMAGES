@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { TokenInterceptor } from './interceptors/token.interceptor';
 
@@ -17,6 +18,7 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
+    ToastrModule.forRoot(),
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },

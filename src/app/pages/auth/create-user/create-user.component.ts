@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserCreate } from 'src/app/dtos/user';
 import { UserService } from 'src/app/services/user.service';
+import { TokenService } from 'src/app/services/token.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-create-user',
@@ -22,7 +24,9 @@ export class CreateUserComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private readonly userService: UserService,
-    private readonly router: Router
+    private readonly router: Router,
+    private readonly tokenService: TokenService,
+    private readonly toastrService: ToastrService
   ) {
     this.userCreateForm = this.formBuilder.group({
       userName: ['', [Validators.required, Validators.minLength(5)]],
@@ -44,7 +48,15 @@ export class CreateUserComponent implements OnInit {
       this.user.user_name_login = this.userCreateForm.value.userLogin;
       this.userService.userCreate(this.user).subscribe((data) => {
         this.clear();
-        this.router.navigate(['auth']);
+        this.toastrService.success(
+          'Usuario creado',
+          'Usuario creado con exito'
+        );
+        if (!!this.tokenService.getToken()) {
+          this.router.navigate(['user/userall']);
+        } else {
+          this.router.navigate(['auth']);
+        }
       });
     } catch (error) {
       console.error(error);

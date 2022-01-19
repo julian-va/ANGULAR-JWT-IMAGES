@@ -1,1 +1,63 @@
-<p>user-update-delete works!</p>
+<mat-toolbar color="primary">
+  <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with menu icon"
+  ></button>
+  <span>Angular-jwt-images</span>
+  <span class="example-spacer"></span>
+
+  <button
+    mat-icon-button
+    class="example-icon"
+    matTooltip="User all"
+    aria-label="Example icon-button with share icon"
+    routerLink="/user/userall"
+  >
+    <mat-icon>person_add</mat-icon>
+  </button>
+</mat-toolbar>
+<mat-card class="example-card">
+  <div mat-card-avatar class="example-header-image"></div>
+  <mat-card-title>User update</mat-card-title>
+  <div class="body">
+    <div class="login">
+      <form [formGroup]="userCreateForm" (ngSubmit)="updateUser()">
+        <mat-form-field class="ancho" appearance="fill">
+          <mat-label>User name</mat-label>
+          <input type="text" matInput formControlName="userName" />
+        </mat-form-field>
+        <mat-form-field class="ancho" appearance="fill">
+          <mat-label>User login</mat-label>
+          <input type="text" matInput formControlName="userLogin" />
+        </mat-form-field>
+        <mat-form-field class="ancho" appearance="fill">
+          <mat-label>Email</mat-label>
+          <input type="email" matInput formControlName="userEmail" />
+        </mat-form-field>
+        <mat-form-field class="ancho" appearance="fill">
+          <mat-label>User Password</mat-label>
+          <input type="password" matInput formControlName="usepassword" />
+        </mat-form-field>
+
+        <mat-form-field class="ancho" appearance="fill">
+          <mat-label>User activate</mat-label>
+          <mat-select formControlName="isactive">
+            <mat-option value="true">True</mat-option>
+            <mat-option value="false">False</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br />
+        <button
+          type="submit"
+          mat-raised-button
+          color="primary"
+          class="ancho button"
+          [disabled]="userCreateForm.invalid"
+        >
+          Update user
+        </button>
+      </form>
+    </div>
+  </div>
+</mat-card>

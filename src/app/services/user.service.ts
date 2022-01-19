@@ -26,4 +26,19 @@ export class UserService {
   getAllUser(): Observable<UserBase[]> {
     return this.httpClient.get<UserBase[]>(this.urlUser.getAllUser);
   }
+
+  deleteUser(userId: number) {
+    return this.httpClient.delete(`${this.urlUser.deleteUser}/${userId}`);
+  }
+
+  userById(userId: number): Observable<UserBase> {
+    return this.httpClient.get<UserBase>(`${this.urlUser.getUserId}/${userId}`);
+  }
+
+  userUpdate(userId: number, user: UserCreate): Observable<UserBase> {
+    return this.httpClient.put<UserBase>(
+      `${this.urlUser.updateUser}/${userId}`,
+      user
+    );
+  }
 }

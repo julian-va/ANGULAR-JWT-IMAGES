@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from 'src/app/guards/auth.guard';
+import { UserUpdateDeleteComponent } from './user-update-delete/user-update-delete.component';
 import { UserallComponent } from './userall/userall.component';
 
 const routes: Routes = [
@@ -13,6 +14,11 @@ const routes: Routes = [
     path: 'userall',
     canActivate: [AuthGuard],
     component: UserallComponent,
+  },
+  {
+    path: 'update/:userId',
+    canActivate: [AuthGuard],
+    component: UserUpdateDeleteComponent,
   },
 ];
 

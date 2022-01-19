@@ -21,12 +21,14 @@ export class UserallComponent implements OnInit {
     'user_is_active',
     'creation_date',
     'user_hashed_password',
+    'Acciones',
   ];
+  listUser: UserBase[] = [];
 
   dataSource!: MatTableDataSource<UserBase>;
 
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
+  @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
+  @ViewChild(MatSort, { static: true }) sort!: MatSort;
 
   constructor(
     private readonly userService: UserService,
@@ -35,11 +37,7 @@ export class UserallComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.userService.getAllUser().subscribe((response) => {
-      this.dataSource = new MatTableDataSource(response);
-      this.dataSource.sort = this.sort;
-      this.dataSource.paginator = this.paginator;
-    });
+    this.loadUsers();
   }
 
   applyFilter(event: Event) {
@@ -55,6 +53,28 @@ export class UserallComponent implements OnInit {
     try {
       this.tokenService.deleteToken();
       this.router.navigate(['auth']);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  deleteUser(user_id: number): void {
+    try {
+      this.userService.deleteUser(user_id).subscribe((response) => {
+        this.loadUsers();
+        console.log(response);
+      });
+    } catch (error) {}
+  }
+
+  loadUsers(): void {
+    try {
+      this.userService.getAllUser().subscribe((response) => {
+        this.dataSource = new MatTableDataSource(response);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+        this.listUser = response;
+      });
     } catch (error) {
       console.error(error);
     }
