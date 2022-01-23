@@ -1,0 +1,61 @@
+<mat-toolbar color="primary">
+  <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with menu icon"
+  ></button>
+  <span>Angular-jwt-images</span>
+  <span class="example-spacer"></span>
+
+  <button
+    mat-icon-button
+    class="example-icon"
+    matTooltip="files User"
+    aria-label="Example icon-button with share icon"
+    routerLink="/files/filesUser"
+  >
+    <mat-icon>upload_file</mat-icon>
+  </button>
+
+  <button
+    mat-icon-button
+    class="example-icon"
+    matTooltip="logout"
+    aria-label="Example icon-button with share icon"
+    routerLink="/authUserCreate"
+    (click)="logout()"
+  >
+    <mat-icon>logout</mat-icon>
+  </button>
+</mat-toolbar>
+
+<mat-card class="example-card">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>Images</mat-card-title>
+    <mat-card-subtitle>User Images</mat-card-subtitle>
+  </mat-card-header>
+  <img
+    *ngFor="let photo of filesUrl"
+    mat-card-image
+    [src]="photo.url"
+    alt="Photo of a Shiba Inu"
+  />
+  <mat-card-content>
+    <p></p>
+  </mat-card-content>
+  <mat-card-actions>
+    <input
+      type="file"
+      (change)="onUpload($event)"
+      multiple="true"
+      hidden="true"
+      #photoInput
+    />
+
+    <button mat-button color="primary" (click)="photoInput.click()">
+      UPLOAD
+    </button>
+    <button mat-button color="primary">SHARE</button>
+  </mat-card-actions>
+</mat-card>

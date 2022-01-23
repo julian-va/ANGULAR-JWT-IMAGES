@@ -13,6 +13,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/users/users.module').then((m) => m.UsersModule),
   },
+  {
+    path: 'files',
+    loadChildren: () =>
+      import('./pages/files/files.module').then((m) => m.FilesModule),
+  },
 
   { path: '**', component: NotFoundComponent },
 ];

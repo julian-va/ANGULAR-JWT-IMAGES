@@ -1,0 +1,48 @@
+<mat-toolbar color="primary">
+  <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with menu icon"
+  ></button>
+  <span>Angular-jwt-images</span>
+  <span class="example-spacer"></span>
+
+  <button
+    mat-icon-button
+    class="example-icon"
+    matTooltip="Upload file"
+    aria-label="Example icon-button with share icon"
+    routerLink="/files/upload"
+  >
+    <mat-icon>upload_file</mat-icon>
+  </button>
+
+  <button
+    mat-icon-button
+    class="example-icon"
+    matTooltip="User"
+    aria-label="Example icon-button with share icon"
+    routerLink="/user/userall"
+  >
+    <mat-icon>people</mat-icon>
+  </button>
+
+  <button
+    mat-icon-button
+    class="example-icon"
+    matTooltip="logout"
+    aria-label="Example icon-button with share icon"
+    routerLink="/authUserCreate"
+    (click)="logout()"
+  >
+    <mat-icon>logout</mat-icon>
+  </button>
+</mat-toolbar>
+
+<div>
+  <p>
+    <button type="button" (click)="ondeletaAllFile()">
+      borrar todas las fotos
+    </button>
+  </p>
+</div>
