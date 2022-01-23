@@ -10,4 +10,10 @@ export interface UserFiles {
 
 export interface FilesUrl extends UserFiles {
   url?: string;
+  urlDowload?: string;
+}
+export enum TypeImages {
+  'image/jpeg',
+  'image/jpg',
+  'image/png',
 }

@@ -33,13 +33,13 @@
   <mat-card-header>
     <div mat-card-avatar class="example-header-image"></div>
     <mat-card-title>Images</mat-card-title>
-    <mat-card-subtitle>User Images</mat-card-subtitle>
+    <mat-card-subtitle>User Images Upload</mat-card-subtitle>
   </mat-card-header>
   <img
     *ngFor="let photo of filesUrl"
     mat-card-image
-    [src]="photo.url"
-    alt="Photo of a Shiba Inu"
+    [src]="photo"
+    alt="Photo upload user"
   />
   <mat-card-content>
     <p></p>
@@ -56,6 +56,6 @@
     <button mat-button color="primary" (click)="photoInput.click()">
       UPLOAD
     </button>
-    <button mat-button color="primary">SHARE</button>
+    <button mat-button color="primary" (click)="onClear()">CLEAR</button>
   </mat-card-actions>
 </mat-card>

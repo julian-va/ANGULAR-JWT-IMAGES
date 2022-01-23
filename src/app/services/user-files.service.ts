@@ -40,4 +40,27 @@ export class UserFilesService {
   filesDeleteAll() {
     return this.httpClient.delete(this.urlFile.deleteAllFiles);
   }
+
+  fileDownload(fileId: number) {
+    return this.httpClient.get(`${this.urlFile.downloadFile}${fileId}`);
+  }
+
+  fileGetAll(): Observable<FilesUrl[]> {
+    return this.httpClient.get<FilesUrl[]>(this.urlFile.getAllFile).pipe(
+      map((res) =>
+        res.map((item) => {
+          let temp: FilesUrl = {
+            ...item,
+            url: `${this.urlFile.getfile}${item.user_file_id}`,
+            urlDowload: `${this.urlFile.downloadFile}${item.user_file_id}`,
+          };
+          return temp;
+        })
+      )
+    );
+  }
+
+  fileDeleteById(fileId: number) {
+    return this.httpClient.delete(`${this.urlFile.deleteFileById}${fileId}`);
+  }
 }

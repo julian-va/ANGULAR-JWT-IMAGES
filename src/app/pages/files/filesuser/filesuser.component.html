@@ -41,8 +41,45 @@
 
 <div>
   <p>
-    <button type="button" (click)="ondeletaAllFile()">
-      borrar todas las fotos
+    <button
+      class="boton-class"
+      mat-raised-button
+      color="warn"
+      (click)="ondeletaAllFile()"
+    >
+      Delete all images
     </button>
   </p>
 </div>
+
+<dir *ngFor="let photo of imgAll">
+  <mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>Images</mat-card-title>
+      <mat-card-subtitle
+        >Name image: {{ photo.user_file_name | titlecase }}</mat-card-subtitle
+      >
+    </mat-card-header>
+    <img mat-card-image [src]="photo.url" alt="Photo upload user" />
+    <mat-card-content>
+      <p>type : {{ photo.user_file_type }}</p>
+      <p>userID : {{ photo.user_id }}</p>
+      <p>isActive : {{ photo.user_is_active }}</p>
+      <p>Date : {{ photo.creation_date | date }}</p>
+      <p>Saved location: {{ photo.user_file_dir }}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button color="primary">
+        <a [href]="photo.urlDowload"> DOWNLOAD</a>
+      </button>
+      <button
+        mat-button
+        color="primary"
+        (click)="onDeleteById(photo.user_file_id)"
+      >
+        DELETE IMAGE
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</dir>
